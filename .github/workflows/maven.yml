@@ -119,8 +119,8 @@ jobs:
         context: .
         push: true
         tags: |
-          duybo95/bankapp:latest
-          duybo95/bankapp:${{ github.run_number }}
+          duybo95/boardgame:latest
+          duybo95/boardgame:${{ github.run_number }}
         file: ./Dockerfile
 
   update_docker_image_tag:
@@ -131,13 +131,13 @@ jobs:
       - name: Checkout deployment repo
         uses: actions/checkout@v4
         with:
-          repository: Duybo007/gitops-github-action-project
+          repository: Duybo007/gitops-boardgame
           token: ${{ secrets.DEPLOYMENT_REPO_TOKEN }} 
           path: deployment-repo
       
       - name: Update deployment.yaml image tag
         run: |
-          sed -i "s|image: duybo95/bankapp:.*|image: duybo95/bankapp:${{ github.run_number }}|" deployment-repo/deployment.yaml
+          sed -i "s|image: duybo95/boardgame:.*|image: duybo95/boardgame:${{ github.run_number }}|" deployment.yaml
       
       - name: Commit and push update
         run: |
