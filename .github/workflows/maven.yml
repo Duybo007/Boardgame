@@ -137,7 +137,7 @@ jobs:
       
       - name: Update deployment.yaml image tag
         run: |
-          sed -i "s|image: duybo95/boardgame:.*|image: duybo95/boardgame:${{ github.run_number }}|" deployment.yaml
+          sed -i "s|image: duybo95/boardgame:.*|image: duybo95/boardgame:${{ github.run_number }}|" deployment-repo/deployment.yaml
       
       - name: Commit and push update
         run: |
